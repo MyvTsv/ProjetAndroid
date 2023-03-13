@@ -1,6 +1,5 @@
 package com.example.suballigator.entitee
 
-import androidx.room.Delete
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
