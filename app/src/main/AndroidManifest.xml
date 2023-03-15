@@ -12,6 +12,11 @@
         android:theme="@style/Theme.SubAlligator"
         tools:targetApi="31">
         <activity
+            android:name=".ListeDesFormationsAcitivty"
+            android:exported="false"
+            android:label="@string/title_activity_liste_des_formations_acitivty"
+            android:theme="@style/Theme.SubAlligator" />
+        <activity
             android:name=".SubAlligator"
             android:exported="true">
             <intent-filter>
