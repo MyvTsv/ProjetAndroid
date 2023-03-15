@@ -3,7 +3,7 @@ package com.example.suballigator.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.suballigator.entitee.Aptitude
+import com.example.suballigator.entity.Aptitude
 
 @Dao
 interface AptitudeDAO {
@@ -13,5 +13,6 @@ interface AptitudeDAO {
 
     @Query("SELECT * FROM Aptitude")
     suspend fun getAll(): List<Aptitude>
+
 
 }

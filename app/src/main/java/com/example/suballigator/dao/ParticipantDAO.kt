@@ -3,8 +3,7 @@ package com.example.suballigator.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.suballigator.entitee.ContainSkill
-import com.example.suballigator.entitee.Participant
+import com.example.suballigator.entity.Participant
 
 @Dao
 interface ParticipantDAO {

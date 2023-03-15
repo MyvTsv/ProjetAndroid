@@ -2,7 +2,7 @@ package com.example.suballigator.dao
 
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.suballigator.entitee.TrainingManager
+import com.example.suballigator.entity.TrainingManager
 
 interface TrainingManagerDAO {
 

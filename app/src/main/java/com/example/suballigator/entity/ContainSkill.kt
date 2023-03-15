@@ -1,4 +1,4 @@
-package com.example.suballigator.entitee
+package com.example.suballigator.entity
 
 import androidx.room.Entity
 import androidx.room.ForeignKey

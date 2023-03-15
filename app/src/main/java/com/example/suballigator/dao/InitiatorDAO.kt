@@ -3,7 +3,7 @@ package com.example.suballigator.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.suballigator.entitee.Initiator
+import com.example.suballigator.entity.Initiator
 
 @Dao
 interface InitiatorDAO {

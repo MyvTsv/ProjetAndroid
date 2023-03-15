@@ -1,23 +1,20 @@
-package com.example.suballigator.entitee
+package com.example.suballigator.entity
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Initiator",
+@Entity(tableName = "Skill",
     foreignKeys = [ForeignKey(entity = Level::class,
         parentColumns = ["levelId"],
         childColumns = ["levelId"])
     ])
 
-data class Initiator(
+data class Skill(
 
     @PrimaryKey(autoGenerate = true)
-    val initiatorId: Int = 1,
+    val skillId: Int = 1,
     val name: String,
-    val email: String,
-    val password: String,
-    val director: Boolean,
     val levelId: Int,
     val deleted: Boolean
 
