@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c8f81a88-14e8-44bd-a2c3-3ed96e8230be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/androidTest/java/com/example/suballigator/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/androidTest/java/com/example/suballigator/ExampleInstrumentedTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v33/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/mipmap-anydpi-v33/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values-night/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/xml/backup_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/xml/backup_rules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/xml/data_extraction_rules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/Database.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/Database.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/ExampleUnitTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/AptitudeDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/AptitudeDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/ContainSkillDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/ContainSkillDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/ContentDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/ContentDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/FormationDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/FormationDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/InitiatorDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/InitiatorDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/LevelDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/LevelDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/ParticipantDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/ParticipantDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/SessionDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/SessionDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/SkillDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/SkillDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/StatusDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/StatusDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/StudentDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/StudentDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/TrainingManagerDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/dao/TrainingManagerDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Aptitude.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Aptitude.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/ContainSkill.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/ContainSkill.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Content.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Content.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Formation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Formation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Initiator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Initiator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Level.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Level.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Participant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Participant.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Session.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Session.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Skill.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Skill.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Status.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Status.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Student.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/Student.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/TrainingManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/suballigator/entitee/TrainingManager.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../settings.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Mx9yWxAcWkn6Is86cUddGXdlOI" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/langl/OneDrive/Documents/S4/R4.11/Projet/ProjetAndroid/app&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c8f81a88-14e8-44bd-a2c3-3ed96e8230be" name="Changes" comment="" />
+      <created>1678698621067</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678698621067</updated>
+    </task>
+    <servers />
+  </component>
+</project>
