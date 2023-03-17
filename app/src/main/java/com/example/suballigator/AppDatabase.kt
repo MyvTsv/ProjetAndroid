@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.suballigator.dao.*
 import com.example.suballigator.entity.*
 
@@ -35,23 +37,35 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun trainingManagerDAO(): TrainingManagerDAO
 
     companion object {
-        @Volatile
-        private var INSTANCE: AppDatabase? = null
-
-        fun getDatabase(context: Context): AppDatabase {
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
-            }
-            synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    AppDatabase::class.java,
-                    "appDatabase"
-                ).build()
-                INSTANCE = instance
-                return instance
+        private const val DATABASE_NAME = "my_database"
+        private val migration = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("ALTER TABLE formation ADD COLUMN description TEXT")
             }
         }
+        private var instance: AppDatabase? = null
+
+        fun getDatabase(context: Context): AppDatabase {
+            if (instance!= null) {
+                return instance as AppDatabase
+            }
+            instance = Room.databaseBuilder(
+                context.applicationContext,
+                AppDatabase::class.java,
+                DATABASE_NAME
+            ).addMigrations(migration)
+                .build()
+            return instance as AppDatabase
+        }
+
+        fun destroyInstance() {
+            instance = null
+        }
+
+        fun onCreate(db: SupportSQLiteDatabase) {
+            db.execSQL("CREATE TABLE IF NOT EXISTS formation (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT)")
+        }
+
+
     }
 }

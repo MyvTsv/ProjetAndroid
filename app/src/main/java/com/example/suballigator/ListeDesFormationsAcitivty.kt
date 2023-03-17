@@ -1,5 +1,6 @@
 package com.example.suballigator
 
+import ContainSkillViewModel
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -22,7 +23,8 @@ class ListeDesFormationsAcitivty : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    var test = ContainSkillViewModel(application).getDataAPI()
+                    Greeting(test.toString())
                 }
             }
         }
@@ -31,6 +33,7 @@ class ListeDesFormationsAcitivty : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
+
     Text(text = "Hello $name!")
 }
 

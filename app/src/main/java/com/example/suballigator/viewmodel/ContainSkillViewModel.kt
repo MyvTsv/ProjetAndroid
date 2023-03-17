@@ -22,19 +22,15 @@ class ContainSkillViewModel(application: Application) : AndroidViewModel(applica
         repository = ContainSkillRepository(containSkillDao)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://dev-restandroid.users.info.unicaen.fr/REST")
+            .baseUrl("https://dev-restandroid.users.info.unicaen.fr/REST/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val api = retrofit.create(APIService::class.java)
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = api.getContainSkill()
-            if (response.isSuccessful) {
-                dataAPI.postValue(response.body())
-            }
+            dataAPI.postValue(api.getContainSkill())
         }
-
     }
 
     fun getDataAPI(): LiveData<List<ContainSkill>> = dataAPI

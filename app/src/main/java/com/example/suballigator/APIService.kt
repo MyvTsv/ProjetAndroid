@@ -6,40 +6,40 @@ import retrofit2.http.GET
 
 interface APIService {
 
-    @GET("/aptitude")
+    @GET("aptitude")
     suspend fun getAptitude(): List<Aptitude>
 
-    @GET("/containSkill")
-    suspend fun getContainSkill(): Call<List<ContainSkill>>
+    @GET("containSkill")
+    suspend fun getContainSkill(): List<ContainSkill>
 
-    @GET("/content")
+    @GET("content")
     suspend fun getContent(): List<Content>
 
-    @GET("/formation")
+    @GET("formation")
     suspend fun getFormation(): List<Formation>
 
-    @GET("/initiator")
+    @GET("initiator")
     suspend fun getInitiator(): List<Initiator>
 
-    @GET("/level")
+    @GET("level")
     suspend fun getLevel(): List<Level>
 
-    @GET("/participant")
+    @GET("participant")
     suspend fun getParticipant(): List<Participant>
 
-    @GET("/session")
+    @GET("session")
     suspend fun getSession(): List<Session>
 
-    @GET("/skill")
+    @GET("skill")
     suspend fun getSkill(): List<Skill>
 
-    @GET("/status")
+    @GET("status")
     suspend fun getStatus(): List<Status>
 
-    @GET("/student")
+    @GET("student")
     suspend fun getStudent(): List<Student>
 
-    @GET("/trainingManager")
+    @GET("trainingManager")
     suspend fun getTrainingManager(): List<TrainingManager>
 
 }

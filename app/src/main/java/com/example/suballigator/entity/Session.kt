@@ -15,7 +15,7 @@ data class Session(
 
     @PrimaryKey(autoGenerate = true)
     val sessionId: Int = 1,
-    val date: LocalDateTime,
+    val date: String,
     val formationId: Int,
     val deleted:  Boolean
 

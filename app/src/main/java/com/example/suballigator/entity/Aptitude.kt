@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Aptitude",
     foreignKeys = [ForeignKey(entity = Skill::class,
-        parentColumns = ["aptitudeId"],
-        childColumns = ["aptitudeId"])
+        parentColumns = ["skillId"],
+        childColumns = ["skillId"])
     ])
 
 data class Aptitude(
