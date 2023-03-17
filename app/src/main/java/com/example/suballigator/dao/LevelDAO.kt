@@ -14,4 +14,13 @@ interface LevelDAO {
     @Query("SELECT * FROM Level")
     suspend fun getAll(): List<Level>
 
+    @Query("SELECT * FROM Level WHERE levelId = :level_id")
+    suspend fun getLevelById(level_id: Int): Level
+
+    @Query("SELECT * FROM Level WHERE name = :name")
+    suspend fun getLevelByName(name: String): Level
+
+    @Query("DELETE FROM Level")
+    suspend fun deleteAll()
+
 }

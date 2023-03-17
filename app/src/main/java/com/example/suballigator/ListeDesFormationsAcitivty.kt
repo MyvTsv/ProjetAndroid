@@ -1,6 +1,6 @@
 package com.example.suballigator
 
-import ContainSkillViewModel
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -11,20 +11,37 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.suballigator.entity.Level
 import com.example.suballigator.ui.theme.SubAlligatorTheme
+import com.example.suballigator.viewmodel.LevelViewModel
+import kotlinx.coroutines.*
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Thread.sleep
 
 class ListeDesFormationsAcitivty : ComponentActivity() {
+    @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             SubAlligatorTheme {
-                // A surface container using the 'background' color from the theme
+
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    var test = ContainSkillViewModel(application).getDataAPI()
-                    Greeting(test.toString())
+
+                    val viewModel = LevelViewModel(application)
+
+                    CoroutineScope(Dispatchers.IO).launch {
+
+                        //AppDatabase.destroyInstance()
+                        viewModel.insertLevelFromAPI()
+
+                        for (level in viewModel.getAll()) {
+                            println(level)
+                        }
+                    }
                 }
             }
         }
@@ -41,6 +58,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     SubAlligatorTheme {
-        Greeting("Android")
+        Greeting("Androide")
     }
 }
