@@ -13,4 +13,10 @@ interface ContainSkillDAO {
 
     @Query("SELECT * FROM ContainSkill")
     suspend fun getAll(): List<ContainSkill>
+
+    @Query("SELECT * FROM ContainSkill WHERE containSkillId = :containSkillId")
+    suspend fun getContainSkillById(containSkillId: Int): List<ContainSkill>
+
+    @Query("DELETE FROM ContainSkill")
+    suspend fun deleteAll()
 }

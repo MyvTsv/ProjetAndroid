@@ -7,6 +7,21 @@ class FormationRepository(private val formationDao: FormationDAO) {
 
     suspend fun insert(formation: Formation) = formationDao.insert(formation)
 
+    suspend fun insert(formation: List<Formation>) {
+        for (formation in formation) {
+            formationDao.insert(formation)
+        }
+    }
+
     suspend fun getAll() = formationDao.getAll()
+
+    suspend fun isExist(formation: Formation): Boolean {
+        if (formationDao.getFormationById(formation.formationId) != null) {
+            return true
+        }
+        return false
+    }
+
+    suspend fun deleteAll() = formationDao.deleteAll()
 
 }

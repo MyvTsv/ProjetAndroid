@@ -14,4 +14,10 @@ interface InitiatorDAO {
     @Query("SELECT * FROM Initiator")
     suspend fun getAll(): List<Initiator>
 
+    @Query("SELECT * FROM Initiator WHERE initiatorId = :initiator_id")
+    suspend fun getInitiatorById(initiator_id: Int): Initiator
+
+    @Query("DELETE FROM Initiator")
+    suspend fun deleteAll()
+
 }

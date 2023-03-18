@@ -7,6 +7,21 @@ class StudentRepository(private val studentDao: StudentDAO) {
 
     suspend fun insert(student: Student) = studentDao.insert(student)
 
+    suspend fun insert(student: List<Student>) {
+        for (student in student) {
+            studentDao.insert(student)
+        }
+    }
+
     suspend fun getAll() = studentDao.getAll()
+
+    suspend fun isExist(student: Student): Boolean {
+        if (studentDao.getStudentById(student.studentId) != null) {
+            return true
+        }
+        return false
+    }
+
+    suspend fun deleteAll() = studentDao.deleteAll()
 
 }

@@ -13,4 +13,10 @@ interface ContentDAO {
 
     @Query("SELECT * FROM Content")
     suspend fun getAll(): List<Content>
+
+    @Query("SELECT * FROM Content WHERE contentId = :contentId")
+    suspend fun getContentById(contentId: Int): Content
+
+    @Query("DELETE FROM Content")
+    suspend fun deleteAll()
 }

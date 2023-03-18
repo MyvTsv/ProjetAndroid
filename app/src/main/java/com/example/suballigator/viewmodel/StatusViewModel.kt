@@ -4,34 +4,34 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.example.suballigator.APIService
 import com.example.suballigator.AppDatabase
-import com.example.suballigator.entity.Formation
-import com.example.suballigator.repository.FormationRepository
+import com.example.suballigator.entity.Status
+import com.example.suballigator.repository.StatusRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class FormationViewModel(application: Application) : AndroidViewModel(application) {
+class StatusViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: FormationRepository
+    private val repository: StatusRepository
 
     init {
-        val formationDao = AppDatabase.getDatabase(application).formationDAO()
-        repository = FormationRepository(formationDao)
+        val statusDao = AppDatabase.getDatabase(application).statusDAO()
+        repository = StatusRepository(statusDao)
     }
 
-    suspend fun insert(formation: Formation) = repository.insert(formation)
+    suspend fun insert(status: Status) = repository.insert(status)
 
-    suspend fun insert(formation: List<Formation>) = repository.insert(formation)
+    suspend fun insert(status: List<Status>) = repository.insert(status)
 
     suspend fun getAll() = repository.getAll()
 
-    suspend fun isExist(formation: Formation) = repository.isExist(formation)
+    suspend fun isExist(status: Status) = repository.isExist(status)
 
     suspend fun deleteAll() = repository.deleteAll()
 
-    fun insertFormationFromAPI() {
+    fun insertStatusFromAPI() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://dev-restandroid.users.info.unicaen.fr/REST/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -42,9 +42,9 @@ class FormationViewModel(application: Application) : AndroidViewModel(applicatio
         val launch = CoroutineScope(Dispatchers.IO).launch {
 
             try {
-                for (formation in api.getFormation()) {
-                    if (!isExist(formation)) {
-                        insert(formation)
+                for (status in api.getStatus()) {
+                    if (!isExist(status)) {
+                        insert(status)
                     }
                 }
             } catch (e: Exception) {

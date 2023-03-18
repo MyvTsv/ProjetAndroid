@@ -14,4 +14,10 @@ interface SkillDAO {
     @Query("SELECT * FROM Skill")
     suspend fun getAll(): List<Skill>
 
+    @Query("SELECT * FROM Skill WHERE skillId = :skill_id")
+    suspend fun getSkillById(skill_id: Int): Skill
+
+    @Query("DELETE FROM Skill")
+    suspend fun deleteAll()
+
 }

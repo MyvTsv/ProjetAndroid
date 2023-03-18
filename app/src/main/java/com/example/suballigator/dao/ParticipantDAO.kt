@@ -14,4 +14,9 @@ interface ParticipantDAO {
     @Query("SELECT * FROM Participant")
     suspend fun getAll(): List<Participant>
 
+    @Query("SELECT * FROM Participant WHERE participantId = :participant_id")
+    suspend fun getParticipantById(participant_id: Int): Participant
+
+    @Query("DELETE FROM Participant")
+    suspend fun deleteAll()
 }

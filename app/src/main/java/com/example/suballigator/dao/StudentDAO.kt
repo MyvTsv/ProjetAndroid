@@ -14,4 +14,10 @@ interface StudentDAO {
     @Query("SELECT * FROM Student")
     suspend fun getAll(): List<Student>
 
+    @Query("SELECT * FROM Student WHERE studentId = :student_id")
+    suspend fun getStudentById(student_id: Int): Student
+
+    @Query("DELETE FROM Student")
+    suspend fun deleteAll()
+
 }

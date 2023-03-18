@@ -13,4 +13,10 @@ interface StatusDAO {
 
     @Query("SELECT * FROM Status")
     suspend fun getAll(): List<Status>
+
+    @Query("SELECT * FROM Status WHERE statusId = :status_id")
+    suspend fun getStatusById(status_id: Int): Status
+
+    @Query("DELETE FROM Status")
+    suspend fun deleteAll()
 }

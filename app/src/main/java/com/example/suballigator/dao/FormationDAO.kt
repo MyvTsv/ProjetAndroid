@@ -14,4 +14,10 @@ interface FormationDAO {
     @Query("SELECT * FROM Formation")
     suspend fun getAll(): List<Formation>
 
+    @Query("SELECT * FROM Formation WHERE formationId = :formation_id")
+    suspend fun getFormationById(formation_id: Int): Formation
+
+    @Query("DELETE FROM Formation")
+    suspend fun deleteAll()
+
 }

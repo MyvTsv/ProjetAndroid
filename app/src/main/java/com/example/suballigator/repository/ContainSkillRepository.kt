@@ -15,4 +15,13 @@ class ContainSkillRepository(private val containSkillDao: ContainSkillDAO) {
 
     suspend fun getAll() = containSkillDao.getAll()
 
+    suspend fun isExist(containSkill: ContainSkill): Boolean {
+        if (containSkillDao.getContainSkillById(containSkill.containSkillId) != null) {
+            return true
+        }
+        return false
+    }
+
+    suspend fun deleteAll() = containSkillDao.deleteAll()
+
 }

@@ -14,5 +14,11 @@ interface AptitudeDAO {
     @Query("SELECT * FROM Aptitude")
     suspend fun getAll(): List<Aptitude>
 
+    @Query("SELECT * FROM Aptitude WHERE aptitudeId = :aptitudeId")
+    suspend fun getAptitudeById(aptitudeId: Int): Aptitude
+
+    @Query("DELETE FROM Aptitude")
+    suspend fun deleteAll()
+
 
 }

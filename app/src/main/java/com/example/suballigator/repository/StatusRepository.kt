@@ -7,6 +7,21 @@ class StatusRepository(private val statusDao: StatusDAO) {
 
     suspend fun insert(status: Status) = statusDao.insert(status)
 
+    suspend fun insert(status: List<Status>) {
+        for (status in status) {
+            statusDao.insert(status)
+        }
+    }
+
     suspend fun getAll() = statusDao.getAll()
+
+    suspend fun isExist(status: Status): Boolean {
+        if (statusDao.getStatusById(status.statusId) != null) {
+            return true
+        }
+        return false
+    }
+
+    suspend fun deleteAll() = statusDao.deleteAll()
 
 }

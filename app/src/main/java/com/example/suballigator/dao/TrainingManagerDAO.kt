@@ -13,4 +13,10 @@ interface TrainingManagerDAO {
 
     @Query("SELECT * FROM TrainingManager")
     suspend fun getAll(): List<TrainingManager>
+
+    @Query("SELECT * FROM TrainingManager WHERE trainingManagerId = :trainingManager_id")
+    suspend fun getTrainingManagerById(trainingManager_id: Int): TrainingManager
+
+    @Query("DELETE FROM TrainingManager")
+    suspend fun deleteAll()
 }
