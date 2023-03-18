@@ -44,17 +44,12 @@ class LevelViewModel(application: Application): AndroidViewModel(application) {
 
             try {
                 for (level in api.getLevel()) {
-                    println("Level frolm API : $level")
                     if(!isExist(level)) {
                         insert(level)
                     }
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
-            }
-
-            for (level in repository.getAll()) {
-                println(level)
             }
 
         }

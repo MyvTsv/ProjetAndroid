@@ -11,6 +11,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.suballigator.entity.Level
 import com.example.suballigator.ui.theme.SubAlligatorTheme
 import com.example.suballigator.viewmodel.LevelViewModel
@@ -33,15 +35,14 @@ class ListeDesFormationsAcitivty : ComponentActivity() {
 
                     val viewModel = LevelViewModel(application)
 
-                    CoroutineScope(Dispatchers.IO).launch {
+                    val levelData: MutableLiveData<List<Level>> = MutableLiveData()
 
-                        //AppDatabase.destroyInstance()
+                    runBlocking {
                         viewModel.insertLevelFromAPI()
-
-                        for (level in viewModel.getAll()) {
-                            println(level)
-                        }
+                        levelData.value = viewModel.getAll()
                     }
+
+                    Greeting(levelData.value.toString())
                 }
             }
         }
