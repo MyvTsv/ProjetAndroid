@@ -7,20 +7,25 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.height
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.LiveData
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.NavHost
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.example.suballigator.screen.*
 import com.example.suballigator.entity.*
 import com.example.suballigator.ui.theme.SubAlligatorTheme
 import com.example.suballigator.viewmodel.*
 import kotlinx.coroutines.*
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Thread.sleep
 
 class ListeDesFormationsAcitivty : ComponentActivity() {
@@ -37,20 +42,76 @@ class ListeDesFormationsAcitivty : ComponentActivity() {
 
                     runBlocking { insertDataAPI(application) }
 
-                    val levelFormation: List<Participant>? = getParticipant(application)
+                    val navHostController = rememberNavController()
+                    setContent(navigationMenu(application = application))
 
-                    Greeting(levelFormation.toString())
+                    showApplication(application = application).screenContent()
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
+//@Composable
+//fun showApplication(application: Application): Page {
+//    return showNavigation(application = application)
+//}
 
-    Text(text = "Hello $name!")
+@Composable
+fun navigationMenu(application: Application): CompositionContext? {
+    val pages = listOf(
+        Page("Formation", Icons.Default.Home) { FormationScreen() },
+        Page("Etudiant", Icons.Default.Person) { EtudiantScreen(application, getStudent(application = application)) },
+        Page("Seance", Icons.Default.Settings) { SeanceScreen() },
+        Page("Profil", Icons.Default.Settings) { ProfilScreen() },
+    )
+
+    var currentPage by remember { mutableStateOf(pages[0]) }
+
+    BottomNavigation {
+        pages.forEach { page ->
+            BottomNavigationItem(
+                icon = { Icon(page.icon, contentDescription = page.title) },
+                label = { Text(page.title) },
+                selected = currentPage == page,
+                onClick = { currentPage = page }
+            )
+        }
+    }
 }
+
+//    BottomNavigation(
+//        modifier = Modifier.height(56.dp)
+//    ) {
+//        BottomNavigationItem(
+//            selected = true,
+//            onClick = { println("formation") },
+//            icon = { Icon(Icons.Default.Home, contentDescription = "Formation") },
+//            label = { Text("Formation") }
+//        )
+//        BottomNavigationItem(
+//            selected = false,
+//            onClick = {println("etudiant")},
+//            icon = { Icon(Icons.Default.Search, contentDescription = "Etudiant") },
+//            label = { Text("Etudiant") }
+//        )
+//        BottomNavigationItem(
+//            selected = false,
+//            onClick = {println("Seance")},
+//            icon = { },
+//            label = { Text("Séance") }
+//        )
+//        BottomNavigationItem(
+//            selected = false,
+//            onClick = {println("description")},
+//            icon = { Icon(Icons.Default.Person, contentDescription = "Profil") },
+//            label = { Text("Profil") }
+
+@Composable
+fun FormationPage() {
+    Text(text = "Formation")
+}
+
 
 fun insertDataAPI(application: Application) {
 
@@ -311,10 +372,29 @@ fun getTrainingManager(application: Application): List<TrainingManager>? {
     return trainingManagerData.value
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    SubAlligatorTheme {
-        Greeting("Androide")
-    }
-}
+//@Composable
+//fun MyBottomNavigation() {
+//    val tabs = listOf("Accueil", "Profil", "Paramètres")
+//    val selectedTabIndex = remember { mutableStateOf(0) }
+//
+//    Scaffold(
+//        bottomBar = {
+//            BottomNavigation {
+//                items(tabs.size) { index ->
+//                    BottomNavigationItem(
+//                        icon = { Icon(Icons.Default.Home, contentDescription = "Accueil") },
+//                        label = { Text(tabs[index]) },
+//                        selected = selectedTabIndex.value == index,
+//                        onClick = { selectedTabIndex.value = index }
+//                    )
+//                }
+//            }
+//        }
+//    ) {
+//        when (selectedTabIndex.value) {
+//            0 -> HomeScreen()
+//            1 -> ProfileScreen()
+//            2 -> SettingsScreen()
+//        }
+//    }
+//}
