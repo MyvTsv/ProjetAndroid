@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.suballigator.entity.Student
-import com.example.suballigator.showNavigation
 import com.example.suballigator.viewmodel.StudentViewModel
 import kotlinx.coroutines.runBlocking
 

@@ -6,20 +6,17 @@ import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.Settings
+import androidx.navigation.compose.composable
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavHost
+import androidx.navigation.NavDestination
+import androidx.navigation.NavDestination.Companion.hierarchy
+
+import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.suballigator.screen.*
 import com.example.suballigator.entity.*
@@ -29,83 +26,164 @@ import kotlinx.coroutines.*
 import java.lang.Thread.sleep
 
 class ListeDesFormationsAcitivty : ComponentActivity() {
-    @SuppressLint("CoroutineCreationDuringComposition")
+    @SuppressLint("CoroutineCreationDuringComposition", "UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        runBlocking { insertDataAPI(application) }
         setContent {
             SubAlligatorTheme {
-
-                Surface(
+                val navController = rememberNavController()
+                Scaffold (
+                    bottomBar = { BottomBar(navController = navController)}
+                ) {
+                    BottomNavGraph(application = application, navController = navController)
+                }
+               /* Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
 
-                    runBlocking { insertDataAPI(application) }
 
-                    val navHostController = rememberNavController()
-                    setContent(navigationMenu(application = application))
 
-                    showApplication(application = application).screenContent()
-                }
+
+                    setContent(navigationMenu(application = application, navHostController))
+                }*/
             }
         }
     }
 }
 
-//@Composable
-//fun showApplication(application: Application): Page {
-//    return showNavigation(application = application)
-//}
+@Composable
+fun BottomNavGraph(application: Application, navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        startDestination = BottomMenuItem.formationScreen.route
+    ) {
+        composable(route = BottomMenuItem.formationScreen.route) { FormationScreen(application) }
+        composable(route = BottomMenuItem.etudiantScreen.route) { EtudiantScreen(application, getStudent(application)) }
+        composable(route = BottomMenuItem.seanceScreen.route) { SeanceScreen(application) }
+        composable(route = BottomMenuItem.profilScreen.route) { ProfilScreen(application) }
+    }
+}
 
 @Composable
-fun navigationMenu(application: Application): CompositionContext? {
-    val pages = listOf(
-        Page("Formation", Icons.Default.Home) { FormationScreen() },
-        Page("Etudiant", Icons.Default.Person) { EtudiantScreen(application, getStudent(application = application)) },
-        Page("Seance", Icons.Default.Settings) { SeanceScreen() },
-        Page("Profil", Icons.Default.Settings) { ProfilScreen() },
+fun BottomBar(navController: NavHostController) {
+    val items = listOf(
+        BottomMenuItem.formationScreen,
+        BottomMenuItem.etudiantScreen,
+        BottomMenuItem.seanceScreen,
+        BottomMenuItem.profilScreen
     )
-
-    var currentPage by remember { mutableStateOf(pages[0]) }
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
 
     BottomNavigation {
-        pages.forEach { page ->
-            BottomNavigationItem(
-                icon = { Icon(page.icon, contentDescription = page.title) },
-                label = { Text(page.title) },
-                selected = currentPage == page,
-                onClick = { currentPage = page }
+        items.forEach { item ->
+            AddItem(
+                screen = item,
+                currentDestination = currentDestination,
+                navController = navController
             )
         }
     }
 }
 
-//    BottomNavigation(
-//        modifier = Modifier.height(56.dp)
+@Composable
+fun RowScope.AddItem(
+    screen: BottomMenuItem,
+    currentDestination: NavDestination?,
+    navController: NavHostController
+) {
+    BottomNavigationItem(
+        label = {
+            Text(text = screen.title)
+        },
+        icon = {
+            Icon(
+                imageVector = screen.icon,
+                contentDescription = "Navigation"
+            )
+        },
+        selected = currentDestination?.hierarchy?.any {
+            it.route == screen.route
+        } == true,
+        unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
+        onClick = {
+            navController.navigate(screen.route)
+        }
+    )
+}
+
+
+//@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+//@Composable
+//fun navigationMenu(application: Application, navController: NavHostController): CompositionContext? {
+//    Scaffold(
+//        bottomBar = {
+//            BottomNavigation {
+//                val navBackStackEntry by navController.currentBackStackEntryAsState()
+//                val currentDestination = navBackStackEntry?.destination
+//                val items = listOf(
+//                    BottomMenuItem.formationScreen,
+//                    BottomMenuItem.etudiantScreen,
+//                    BottomMenuItem.seanceScreen,
+//                    BottomMenuItem.profilScreen
+//                )
+//
+//                items.forEach { screen ->
+//                    BottomNavigationItem(
+//                        icon = { Icon(screen.icon, contentDescription = null) },
+//                        label = { Text(screen.title) },
+//                        selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
+//                        onClick = {
+//                            navController.navigate(screen.route) {
+//                                popUpTo(navController.graph.startDestinationId)
+//                                launchSingleTop = true
+//                            }
+//                        }
+//                    )
+//                }
+//            }
+//        }
 //    ) {
-//        BottomNavigationItem(
-//            selected = true,
-//            onClick = { println("formation") },
-//            icon = { Icon(Icons.Default.Home, contentDescription = "Formation") },
-//            label = { Text("Formation") }
-//        )
-//        BottomNavigationItem(
-//            selected = false,
-//            onClick = {println("etudiant")},
-//            icon = { Icon(Icons.Default.Search, contentDescription = "Etudiant") },
-//            label = { Text("Etudiant") }
-//        )
-//        BottomNavigationItem(
-//            selected = false,
-//            onClick = {println("Seance")},
-//            icon = { },
-//            label = { Text("Séance") }
-//        )
-//        BottomNavigationItem(
-//            selected = false,
-//            onClick = {println("description")},
-//            icon = { Icon(Icons.Default.Person, contentDescription = "Profil") },
-//            label = { Text("Profil") }
+//        Box() {
+//            NavHost(
+//                navController = navController,
+//                startDestination = BottomMenuItem.formationScreen.route
+//            ) {
+//                composable(BottomMenuItem.formationScreen.route) { ProfilScreen(application) }
+//                composable(BottomMenuItem.etudiantScreen.route) { EtudiantScreen(application, getStudent(application)) }
+//                composable(BottomMenuItem.seanceScreen.route) { SeanceScreen(application) }
+//                composable(BottomMenuItem.profilScreen.route) { ProfilScreen(application) }
+//            }
+//        }
+//    }
+//}
+
+
+//@Composable
+//fun navigationMenu(application: Application): CompositionContext? {
+//    val pages = listOf(
+//        Page("Formation", Icons.Default.Home) { FormationScreen() },
+//        Page("Etudiant", Icons.Default.Person) { EtudiantScreen(application, getStudent(application = application)) },
+//        Page("Seance", Icons.Default.Settings) { SeanceScreen() },
+//        Page("Profil", Icons.Default.Settings) { ProfilScreen() },
+//    )
+//
+//    var currentPage by remember { mutableStateOf(pages[0]) }
+//
+//    BottomNavigation {
+//        pages.forEach { page ->
+//            BottomNavigationItem(
+//                icon = { Icon(page.icon, contentDescription = page.title) },
+//                label = { Text(page.title) },
+//                selected = currentPage == page,
+//                onClick = { currentPage = page }
+//            )
+//        }
+//    }
+//}
+
 
 @Composable
 fun FormationPage() {
