@@ -30,7 +30,7 @@ class LoginScreen : AppCompatActivity() {
             loginButton.isEnabled = false
             it.isEnabled = false
 
-            if(emailInput.text.toString().isEmpty() || passwordInput.text.toString().isEmpty()) {
+            if(emailInput.text.toString().isNotEmpty() || passwordInput.text.toString().isNotEmpty()) {
 
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
