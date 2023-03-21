@@ -8,13 +8,13 @@ import com.example.suballigator.entity.ContainSkill
 @Dao
 interface ContainSkillDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(containSkill: ContainSkill)
 
     @Query("SELECT * FROM ContainSkill")
     suspend fun getAll(): List<ContainSkill>
 
-    @Query("SELECT * FROM ContainSkill WHERE containSkillId = :containSkillId")
+    @Query("SELECT * FROM ContainSkill WHERE id = :containSkillId")
     suspend fun getContainSkillById(containSkillId: Int): List<ContainSkill>
 
     @Query("DELETE FROM ContainSkill")

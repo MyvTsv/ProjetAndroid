@@ -1,5 +1,6 @@
 package com.example.suballigator
 
+import ContainSkillViewModel
 import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Bundle
@@ -14,13 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.suballigator.entity.Formation
-import com.example.suballigator.entity.Level
-import com.example.suballigator.entity.Status
+import com.example.suballigator.entity.*
 import com.example.suballigator.ui.theme.SubAlligatorTheme
-import com.example.suballigator.viewmodel.FormationViewModel
-import com.example.suballigator.viewmodel.LevelViewModel
-import com.example.suballigator.viewmodel.StatusViewModel
+import com.example.suballigator.viewmodel.*
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -38,8 +35,9 @@ class ListeDesFormationsAcitivty : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    insertDataAPI(application)
-                    val levelFormation: List<Status>? = getStatus(application)
+                    runBlocking { insertDataAPI(application) }
+
+                    val levelFormation: List<Participant>? = getParticipant(application)
 
                     Greeting(levelFormation.toString())
                 }
@@ -60,25 +58,85 @@ fun insertDataAPI(application: Application) {
         insertLevelAPI(application)
         insertStatusAPI(application)
     }
+    sleep(500)
     runBlocking {
         insertFormationAPI(application)
+        insertSkillAPI(application)
+        insertInitiatorAPI(application)
+    }
+    sleep(500)
+    runBlocking {
+        insertAptitudeAPI(application)
+        insertContainSkillAPI(application)
+        insertSessionAPI(application)
+        insertStudentAPI(application)
+        insertTrainingManagerAPI(application)
+    }
+    sleep(500)
+    runBlocking {
+        insertContentAPI(application)
+    }
+    sleep(500)
+    runBlocking {
+        insertParticipantAPI(application)
     }
 }
 
-fun insertLevelAPI(application: Application) {
-    val levelViewModel = LevelViewModel(application)
+fun insertAptitudeAPI(application: Application) {
+    val aptitudeViewModel = AptitudeViewModel(application)
 
     runBlocking {
-        levelViewModel.insertLevelFromAPI()
+        aptitudeViewModel.insertAptitudeFromAPI()
     }
 }
 
-fun insertStatusAPI(application: Application) {
-    val statusViewModel = StatusViewModel(application)
+fun getAptitude(application: Application): List<Aptitude>? {
+    val aptitudeViewModel = AptitudeViewModel(application)
+    val aptitudeData: MutableLiveData<List<Aptitude>> = MutableLiveData()
 
     runBlocking {
-        statusViewModel.insertStatusFromAPI()
+        aptitudeData.value = aptitudeViewModel.getAll()
     }
+
+    return aptitudeData.value
+}
+
+fun insertContainSkillAPI(application: Application) {
+    val containSkillViewModel = ContainSkillViewModel(application)
+
+    runBlocking {
+        containSkillViewModel.insertContainSkillFromAPI()
+    }
+}
+
+fun getContainSkill(application: Application): List<ContainSkill>? {
+    val containSkillViewModel = ContainSkillViewModel(application)
+    val containSkillData: MutableLiveData<List<ContainSkill>> = MutableLiveData()
+
+    runBlocking {
+        containSkillData.value = containSkillViewModel.getAll()
+    }
+
+    return containSkillData.value
+}
+
+fun insertContentAPI(application: Application) {
+    val contentViewModel = ContentViewModel(application)
+
+    runBlocking {
+        contentViewModel.insertContentFromAPI()
+    }
+}
+
+fun getContent(application: Application): List<Content>? {
+    val contentViewModel = ContentViewModel(application)
+    val contentData: MutableLiveData<List<Content>> = MutableLiveData()
+
+    runBlocking {
+        contentData.value = contentViewModel.getAll()
+    }
+
+    return contentData.value
 }
 
 fun insertFormationAPI(application: Application) {
@@ -88,6 +146,44 @@ fun insertFormationAPI(application: Application) {
         formationViewModel.insertFormationFromAPI()
     }
 
+}
+
+fun getFormation(application: Application): List<Formation>? {
+    val formationViewModel = FormationViewModel(application)
+    val formationData: MutableLiveData<List<Formation>> = MutableLiveData()
+
+    runBlocking {
+        formationData.value = formationViewModel.getAll()
+    }
+
+    return formationData.value
+}
+
+fun insertInitiatorAPI(application: Application) {
+    val initiatorViewModel = InitiatorViewModel(application)
+
+    runBlocking {
+        initiatorViewModel.insertInitiatorFromAPI()
+    }
+}
+
+fun getInitiator(application: Application): List<Initiator>? {
+    val initiatorViewModel = InitiatorViewModel(application)
+    val initiatorData: MutableLiveData<List<Initiator>> = MutableLiveData()
+
+    runBlocking {
+        initiatorData.value = initiatorViewModel.getAll()
+    }
+
+    return initiatorData.value
+}
+
+fun insertLevelAPI(application: Application) {
+    val levelViewModel = LevelViewModel(application)
+
+    runBlocking {
+        levelViewModel.insertLevelFromAPI()
+    }
 }
 
 fun getLevel(application: Application): List<Level>? {
@@ -101,6 +197,71 @@ fun getLevel(application: Application): List<Level>? {
     return levelData.value
 }
 
+fun insertParticipantAPI(application: Application) {
+    val participantViewModel = ParticipantViewModel(application)
+
+    runBlocking {
+        participantViewModel.insertParticipantFromAPI()
+    }
+}
+
+fun getParticipant(application: Application): List<Participant>? {
+    val participantViewModel = ParticipantViewModel(application)
+    val participantData: MutableLiveData<List<Participant>> = MutableLiveData()
+
+    runBlocking {
+        participantData.value = participantViewModel.getAll()
+    }
+
+    return participantData.value
+}
+
+fun insertSessionAPI(application: Application) {
+    val sessionViewModel = SessionViewModel(application)
+
+    runBlocking {
+        sessionViewModel.insertSessionFromAPI()
+    }
+}
+
+fun getSession(application: Application): List<Session>? {
+    val sessionViewModel = SessionViewModel(application)
+    val sessionData: MutableLiveData<List<Session>> = MutableLiveData()
+
+    runBlocking {
+        sessionData.value = sessionViewModel.getAll()
+    }
+
+    return sessionData.value
+}
+
+fun insertSkillAPI(application: Application) {
+    val skillViewModel = SkillViewModel(application)
+
+    runBlocking {
+        skillViewModel.insertSkillFromAPI()
+    }
+}
+
+fun getSkill(application: Application): List<Skill>? {
+    val skillViewModel = SkillViewModel(application)
+    val skillData: MutableLiveData<List<Skill>> = MutableLiveData()
+
+    runBlocking {
+        skillData.value = skillViewModel.getAll()
+    }
+
+    return skillData.value
+}
+
+fun insertStatusAPI(application: Application) {
+    val statusViewModel = StatusViewModel(application)
+
+    runBlocking {
+        statusViewModel.insertStatusFromAPI()
+    }
+}
+
 fun getStatus(application: Application): List<Status>? {
     val statusViewModel = StatusViewModel(application)
     val statusData: MutableLiveData<List<Status>> = MutableLiveData()
@@ -112,15 +273,42 @@ fun getStatus(application: Application): List<Status>? {
     return statusData.value
 }
 
-fun getFormation(application: Application): List<Formation>? {
-    val formationViewModel = FormationViewModel(application)
-    val formationData: MutableLiveData<List<Formation>> = MutableLiveData()
+fun insertStudentAPI(application: Application) {
+    val studentViewModel = StudentViewModel(application)
 
     runBlocking {
-        formationData.value = formationViewModel.getAll()
+        studentViewModel.insertStudentFromAPI()
+    }
+}
+
+fun getStudent(application: Application): List<Student>? {
+    val studentViewModel = StudentViewModel(application)
+    val studentData: MutableLiveData<List<Student>> = MutableLiveData()
+
+    runBlocking {
+        studentData.value = studentViewModel.getAll()
     }
 
-    return formationData.value
+    return studentData.value
+}
+
+fun insertTrainingManagerAPI(application: Application) {
+    val trainingManagerViewModel = TrainingManagerViewModel(application)
+
+    runBlocking {
+        trainingManagerViewModel.insertTrainingManagerFromAPI()
+    }
+}
+
+fun getTrainingManager(application: Application): List<TrainingManager>? {
+    val trainingManagerViewModel = TrainingManagerViewModel(application)
+    val trainingManagerData: MutableLiveData<List<TrainingManager>> = MutableLiveData()
+
+    runBlocking {
+        trainingManagerData.value = trainingManagerViewModel.getAll()
+    }
+
+    return trainingManagerData.value
 }
 
 @Preview(showBackground = true)

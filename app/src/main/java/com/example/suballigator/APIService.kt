@@ -24,7 +24,7 @@ interface APIService {
     @GET("level")
     suspend fun getLevel(): List<Level>
 
-    @GET("participant")
+    @GET("participation")
     suspend fun getParticipant(): List<Participant>
 
     @GET("session")

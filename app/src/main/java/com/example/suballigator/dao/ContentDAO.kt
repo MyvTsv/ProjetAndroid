@@ -8,13 +8,13 @@ import com.example.suballigator.entity.Content
 @Dao
 interface ContentDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(content: Content)
 
     @Query("SELECT * FROM Content")
     suspend fun getAll(): List<Content>
 
-    @Query("SELECT * FROM Content WHERE contentId = :contentId")
+    @Query("SELECT * FROM Content WHERE id = :contentId")
     suspend fun getContentById(contentId: Int): Content
 
     @Query("DELETE FROM Content")

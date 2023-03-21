@@ -8,13 +8,13 @@ import com.example.suballigator.entity.Initiator
 @Dao
 interface InitiatorDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(initiator: Initiator)
 
     @Query("SELECT * FROM Initiator")
     suspend fun getAll(): List<Initiator>
 
-    @Query("SELECT * FROM Initiator WHERE initiatorId = :initiator_id")
+    @Query("SELECT * FROM Initiator WHERE id = :initiator_id")
     suspend fun getInitiatorById(initiator_id: Int): Initiator
 
     @Query("DELETE FROM Initiator")

@@ -41,9 +41,7 @@ class ParticipantViewModel(application: Application) : AndroidViewModel(applicat
 
             try {
                 for (participant in api.getParticipant()) {
-                    if (!isExist(participant)) {
-                        insert(participant)
-                    }
+                    insert(participant)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

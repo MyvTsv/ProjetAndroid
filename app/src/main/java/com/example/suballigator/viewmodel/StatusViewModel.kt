@@ -43,9 +43,7 @@ class StatusViewModel(application: Application) : AndroidViewModel(application) 
 
             try {
                 for (status in api.getStatus()) {
-                    if (!isExist(status)) {
-                        insert(status)
-                    }
+                    insert(status)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

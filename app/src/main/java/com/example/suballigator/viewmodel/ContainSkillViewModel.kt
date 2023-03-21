@@ -25,4 +25,29 @@ class ContainSkillViewModel(application: Application) : AndroidViewModel(applica
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun isExist(containSkill: ContainSkill) = repository.isExist(containSkill)
+
+    suspend fun deleteAll() = repository.deleteAll()
+
+    fun insertContainSkillFromAPI() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://dev-restandroid.users.info.unicaen.fr/REST/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val api = retrofit.create(APIService::class.java)
+
+        val launch = CoroutineScope(Dispatchers.IO).launch {
+
+            try {
+                for (containSkill in api.getContainSkill()) {
+                    insert(containSkill)
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+        }
+    }
+
 }

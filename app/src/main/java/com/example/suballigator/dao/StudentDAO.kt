@@ -8,13 +8,13 @@ import com.example.suballigator.entity.Student
 @Dao
 interface StudentDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(student: Student)
 
     @Query("SELECT * FROM Student")
     suspend fun getAll(): List<Student>
 
-    @Query("SELECT * FROM Student WHERE studentId = :student_id")
+    @Query("SELECT * FROM Student WHERE id = :student_id")
     suspend fun getStudentById(student_id: Int): Student
 
     @Query("DELETE FROM Student")

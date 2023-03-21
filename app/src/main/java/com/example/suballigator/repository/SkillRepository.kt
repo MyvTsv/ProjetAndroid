@@ -16,7 +16,7 @@ class SkillRepository(private val skillDao: SkillDAO) {
     suspend fun getAll() = skillDao.getAll()
 
     suspend fun isExist(skill: Skill): Boolean {
-        if (skillDao.getSkillById(skill.skillId) != null) {
+        if (skillDao.getSkillById(skill.id) != null) {
             return true
         }
         return false

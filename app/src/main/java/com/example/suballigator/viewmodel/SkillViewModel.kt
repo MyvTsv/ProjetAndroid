@@ -41,9 +41,7 @@ class SkillViewModel(application: Application) : AndroidViewModel(application) {
 
             try {
                 for (skill in api.getSkill()) {
-                    if (!isExist(skill)) {
-                        insert(skill)
-                    }
+                    insert(skill)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -6,17 +6,17 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "TrainingManager",
     foreignKeys = [ForeignKey(entity = Formation::class,
-        parentColumns = ["formationId"],
+        parentColumns = ["id"],
         childColumns = ["formationId"]),
         ForeignKey(entity = Initiator::class,
-            parentColumns = ["initiatorId"],
+            parentColumns = ["id"],
             childColumns = ["initiatorId"])
     ])
 
 data class TrainingManager(
 
-    @PrimaryKey(autoGenerate = true)
-    val trainingManagerId: Int = 1,
+    @PrimaryKey
+    val id: Int,
     val initiatorId: Int,
     val formationId: Int
 

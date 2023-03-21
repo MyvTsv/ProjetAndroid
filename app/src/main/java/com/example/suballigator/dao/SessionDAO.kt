@@ -8,13 +8,13 @@ import com.example.suballigator.entity.Session
 @Dao
 interface SessionDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(session: Session)
 
     @Query("SELECT * FROM Session")
     suspend fun getAll(): List<Session>
 
-    @Query("SELECT * FROM Session WHERE sessionId = :session_id")
+    @Query("SELECT * FROM Session WHERE id = :session_id")
     suspend fun getSessionById(session_id: Int): Session
 
     @Query("DELETE FROM Session")

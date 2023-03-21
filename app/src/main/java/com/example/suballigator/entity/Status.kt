@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Status")
 data class Status(
 
-    @PrimaryKey(autoGenerate = true)
-    val statusId:Int = 1,
+    @PrimaryKey
+    val id:Int,
     val name: String,
     val color: String
 

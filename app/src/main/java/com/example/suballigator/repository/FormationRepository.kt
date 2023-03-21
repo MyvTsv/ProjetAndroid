@@ -16,7 +16,7 @@ class FormationRepository(private val formationDao: FormationDAO) {
     suspend fun getAll() = formationDao.getAll()
 
     suspend fun isExist(formation: Formation): Boolean {
-        if (formationDao.getFormationById(formation.formationId) != null) {
+        if (formationDao.getFormationById(formation.id) != null) {
             return true
         }
         return false

@@ -41,9 +41,7 @@ class InitiatorViewModel(application: Application) : AndroidViewModel(applicatio
 
             try {
                 for (initiator in api.getInitiator()) {
-                    if (!isExist(initiator)) {
-                        insert(initiator)
-                    }
+                     insert(initiator)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

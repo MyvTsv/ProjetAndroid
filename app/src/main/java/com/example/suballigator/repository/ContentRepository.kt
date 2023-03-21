@@ -16,7 +16,7 @@ class ContentRepository(private val contentDao: ContentDAO) {
         suspend fun getAll() = contentDao.getAll()
 
         suspend fun isExist(content: Content): Boolean {
-            if (contentDao.getContentById(content.contentId) != null) {
+            if (contentDao.getContentById(content.id) != null) {
                 return true
             }
             return false

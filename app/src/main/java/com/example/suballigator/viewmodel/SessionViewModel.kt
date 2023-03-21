@@ -41,9 +41,7 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
             try {
                 for (session in api.getSession()) {
-                    if (!isExist(session)) {
-                        insert(session)
-                    }
+                    insert(session)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -43,9 +43,7 @@ class FormationViewModel(application: Application) : AndroidViewModel(applicatio
 
             try {
                 for (formation in api.getFormation()) {
-                    if (!isExist(formation)) {
-                        insert(formation)
-                    }
+                    insert(formation)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

@@ -16,7 +16,7 @@ class TrainingManagerRepository(private val trainingManagerDao: TrainingManagerD
     suspend fun getAll() = trainingManagerDao.getAll()
 
     suspend fun isExist(trainingManager: TrainingManager): Boolean {
-        if (trainingManagerDao.getTrainingManagerById(trainingManager.trainingManagerId) != null) {
+        if (trainingManagerDao.getTrainingManagerById(trainingManager.id) != null) {
             return true
         }
         return false

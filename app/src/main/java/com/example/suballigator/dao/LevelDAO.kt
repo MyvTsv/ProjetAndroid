@@ -8,13 +8,13 @@ import com.example.suballigator.entity.Level
 @Dao
 interface LevelDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(level: Level)
 
     @Query("SELECT * FROM Level")
     suspend fun getAll(): List<Level>
 
-    @Query("SELECT * FROM Level WHERE levelId = :level_id")
+    @Query("SELECT * FROM Level WHERE id = :level_id")
     suspend fun getLevelById(level_id: Int): Level
 
     @Query("SELECT * FROM Level WHERE name = :name")

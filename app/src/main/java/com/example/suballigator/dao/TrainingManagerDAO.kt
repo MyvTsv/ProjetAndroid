@@ -8,13 +8,13 @@ import com.example.suballigator.entity.TrainingManager
 @Dao
 interface TrainingManagerDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(trainingManager: TrainingManager)
 
     @Query("SELECT * FROM TrainingManager")
     suspend fun getAll(): List<TrainingManager>
 
-    @Query("SELECT * FROM TrainingManager WHERE trainingManagerId = :trainingManager_id")
+    @Query("SELECT * FROM TrainingManager WHERE id = :trainingManager_id")
     suspend fun getTrainingManagerById(trainingManager_id: Int): TrainingManager
 
     @Query("DELETE FROM TrainingManager")

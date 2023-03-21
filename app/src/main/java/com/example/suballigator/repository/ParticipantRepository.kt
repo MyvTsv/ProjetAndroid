@@ -16,7 +16,7 @@ class ParticipantRepository(private val participantDao: ParticipantDAO) {
     suspend fun getAll() = participantDao.getAll()
 
     suspend fun isExist(participant: Participant): Boolean {
-        if (participantDao.getParticipantById(participant.participantId) != null) {
+        if (participantDao.getParticipantById(participant.id) != null) {
             return true
         }
         return false

@@ -41,9 +41,7 @@ class TrainingManagerViewModel(application: Application) : AndroidViewModel(appl
 
             try {
                 for (trainingManager in api.getTrainingManager()) {
-                    if (!isExist(trainingManager)) {
-                        insert(trainingManager)
-                    }
+                    insert(trainingManager)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

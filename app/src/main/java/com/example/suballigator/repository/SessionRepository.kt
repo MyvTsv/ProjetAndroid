@@ -16,7 +16,7 @@ class SessionRepository(private val sessionDao: SessionDAO) {
     suspend fun getAll() = sessionDao.getAll()
 
     suspend fun isExist(session: Session): Boolean {
-        if (sessionDao.getSessionById(session.sessionId) != null) {
+        if (sessionDao.getSessionById(session.id) != null) {
             return true
         }
         return false

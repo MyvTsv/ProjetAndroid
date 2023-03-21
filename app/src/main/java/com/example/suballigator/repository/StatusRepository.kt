@@ -16,7 +16,7 @@ class StatusRepository(private val statusDao: StatusDAO) {
     suspend fun getAll() = statusDao.getAll()
 
     suspend fun isExist(status: Status): Boolean {
-        if (statusDao.getStatusById(status.statusId) != null) {
+        if (statusDao.getStatusById(status.id) != null) {
             return true
         }
         return false

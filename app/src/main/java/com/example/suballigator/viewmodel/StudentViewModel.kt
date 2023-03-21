@@ -41,9 +41,7 @@ class StudentViewModel(application: Application) : AndroidViewModel(application)
 
             try {
                 for (student in api.getStudent()) {
-                    if (!isExist(student)) {
-                        insert(student)
-                    }
+                    insert(student)
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

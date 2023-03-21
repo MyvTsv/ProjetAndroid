@@ -8,13 +8,13 @@ import com.example.suballigator.entity.Status
 @Dao
 interface StatusDAO {
 
-    @Insert
+    @Insert(onConflict = androidx.room.OnConflictStrategy.REPLACE)
     suspend fun insert(status: Status)
 
     @Query("SELECT * FROM Status")
     suspend fun getAll(): List<Status>
 
-    @Query("SELECT * FROM Status WHERE statusId = :status_id")
+    @Query("SELECT * FROM Status WHERE id = :status_id")
     suspend fun getStatusById(status_id: Int): Status
 
     @Query("DELETE FROM Status")

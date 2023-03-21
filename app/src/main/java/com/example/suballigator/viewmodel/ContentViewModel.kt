@@ -43,9 +43,8 @@ class ContentViewModel(application: Application) : AndroidViewModel(application)
 
             try {
                 for (content in api.getContent()) {
-                    if (!isExist(content)) {
-                        insert(content)
-                    }
+                    insert(content)
+
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

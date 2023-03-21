@@ -32,7 +32,7 @@ class LevelViewModel(application: Application): AndroidViewModel(application) {
 
     suspend fun deleteAll() = repository.deleteAll()
 
-    fun insertLevelFromAPI() {
+    suspend fun insertLevelFromAPI() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://dev-restandroid.users.info.unicaen.fr/REST/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -40,18 +40,12 @@ class LevelViewModel(application: Application): AndroidViewModel(application) {
 
         val api = retrofit.create(APIService::class.java)
 
-        CoroutineScope(Dispatchers.IO).launch {
-
-            try {
-                for (level in api.getLevel()) {
-                    if(!isExist(level)) {
-                        insert(level)
-                    }
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
+        try {
+            for (level in api.getLevel()) {
+                insert(level)
             }
-
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 

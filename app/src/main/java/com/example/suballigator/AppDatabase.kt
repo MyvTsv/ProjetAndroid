@@ -37,7 +37,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun trainingManagerDAO(): TrainingManagerDAO
 
     companion object {
-        private const val DATABASE_NAME = "databaseTest"
+        private const val DATABASE_NAME = "databaseTestttttttttt"
         private val migration = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("ALTER TABLE formation ADD COLUMN description TEXT")
