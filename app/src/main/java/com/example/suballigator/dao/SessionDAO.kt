@@ -14,6 +14,9 @@ interface SessionDAO {
     @Query("SELECT * FROM Session")
     suspend fun getAll(): List<Session>
 
+    @Query("SELECT * FROM Session WHERE deleted = false")
+    suspend fun getAllNoDeleted(): List<Session>
+
     @Query("SELECT * FROM Session WHERE id = :session_id")
     suspend fun getSessionById(session_id: Int): Session
 

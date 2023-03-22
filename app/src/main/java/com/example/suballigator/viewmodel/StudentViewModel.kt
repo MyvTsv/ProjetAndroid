@@ -25,6 +25,8 @@ class StudentViewModel(application: Application) : AndroidViewModel(application)
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getAllNoDeleted() = repository.getAllNoDeleted()
+
     suspend fun isExist(student: Student) = repository.isExist(student)
 
     suspend fun deleteAll() = repository.deleteAll()
