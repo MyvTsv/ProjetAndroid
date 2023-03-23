@@ -6,10 +6,18 @@ import android.app.Application
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.navigation.compose.composable
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.DarkGray
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -39,16 +47,6 @@ class ListeDesFormationsAcitivty : ComponentActivity() {
                 ) {
                     BottomNavGraph(application = application, navController = navController)
                 }
-               /* Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-
-
-
-
-                    setContent(navigationMenu(application = application, navHostController))
-                }*/
             }
         }
     }
@@ -108,9 +106,16 @@ fun RowScope.AddItem(
         selected = currentDestination?.hierarchy?.any {
             it.route == screen.route
         } == true,
-        unselectedContentColor = LocalContentColor.current.copy(alpha = ContentAlpha.disabled),
+        unselectedContentColor = Color(red = 0, green = 0, blue = 0),
         onClick = {
             navController.navigate(screen.route)
+        },
+        modifier = if (currentDestination?.hierarchy?.any {
+                it.route == screen.route
+            } == true) {
+            Modifier.background(color = Color(red = 30, green = 144, blue = 255))
+        } else {
+            Modifier.background(color = Color(red = 255, green = 255, blue = 255))
         }
     )
 }
