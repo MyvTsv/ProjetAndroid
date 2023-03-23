@@ -1,6 +1,5 @@
 package com.example.suballigator.screen
 
-import androidx.compose.foundation.layout.R
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -8,9 +7,9 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ComposeCompilerApi
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
+import com.example.suballigator.AppDatabase
+import androidx.compose.runtime.*
 
 @Composable
 fun TopBar() {
@@ -29,5 +28,5 @@ fun TopBar() {
 }
 
 fun onLogout() {
-    println("Deconnexion")
+    //AppDatabase.initiatorConnected = null
 }

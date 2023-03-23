@@ -37,6 +37,9 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun trainingManagerDAO(): TrainingManagerDAO
 
     companion object {
+
+        open var initiatorConnected : Initiator? = null
+
         private const val DATABASE_NAME = "databaseTestttttttttt"
         private val migration = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {

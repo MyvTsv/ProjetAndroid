@@ -8,8 +8,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import com.example.suballigator.dao.InitiatorDAO
 import com.example.suballigator.entity.Initiator
 import com.example.suballigator.entity.Participant
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.w3c.dom.Text
 import kotlin.math.log
@@ -73,6 +77,7 @@ class LoginScreen : AppCompatActivity() {
     private fun initiatorExist(initiators : List<Initiator>, email:String, password:String):Boolean{
         initiators?.forEach { initiator ->
             if (email == initiator.email && password == initiator.password) {
+                AppDatabase.initiatorConnected = initiator
                 return true
             }
         }
