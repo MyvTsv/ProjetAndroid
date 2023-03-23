@@ -38,7 +38,6 @@ class ListeDesFormationsAcitivty : ComponentActivity() {
     @SuppressLint("CoroutineCreationDuringComposition", "UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        runBlocking { insertDataAPI(application) }
         setContent {
             SubAlligatorTheme {
                 val navController = rememberNavController()
