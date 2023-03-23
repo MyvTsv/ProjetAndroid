@@ -8,37 +8,38 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import java.util.Objects
 
 
 @Composable
-fun CreateList(dataTab: HashMap<String, List<String>>) {
+fun CreateList(dataTab: LinkedHashMap<String, List<String>>) {
     val dataRow = mutableListOf<String>()
     LazyColumn(modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     ) {
-        item { HeadList(dataTab.keys) }
+        item { AddHeadRow(dataTab.keys) }
         dataTab.values.firstOrNull()?.size?.let {
             items(it) { index ->
                 dataRow.clear()
                 for(data in dataTab.values) {
                     dataRow.add(data[index])
                 }
-                AddListRow(data = dataRow, index = index)
+                AddDataRow(data = dataRow, index = index)
             }
         }
     }
 }
 
 @Composable
-fun HeadList(title: MutableSet<String>) {
+fun AddHeadRow(title: MutableSet<String>) {
     Row(
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .background(Color.Cyan)
+            .background(Color(red = 135, green = 206, blue = 250))
             .padding(vertical = 20.dp, horizontal = 1.dp),
     ) {
         title.forEach {
@@ -55,12 +56,13 @@ fun RowScope.AddHeadCell(title: String) {
             .weight(1f)
             .fillMaxWidth()
             .wrapContentHeight(),
-        textAlign = TextAlign.Center
+        textAlign = TextAlign.Center,
+        fontWeight = FontWeight.Bold
     )
 }
 
 @Composable
-fun AddListRow(data: List<String>, index: Int) {
+fun AddDataRow(data: List<String>, index: Int) {
     var colorRow = Color(red = 0xF1, green = 0xF1, blue = 0xF1)
     if (index % 2 == 0) {
         colorRow = Color(red = 0xE1, green = 0xE1, blue = 0xE1)

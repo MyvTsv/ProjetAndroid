@@ -29,18 +29,20 @@ import kotlinx.coroutines.runBlocking
 @Composable
 fun EtudiantScreen(application: Application) {
     Scaffold(
-        topBar = { TopBar() }
-    ) {
-        val dataHashMap = HashMap<String, List<String>>()
-        val dataStudentName = mutableListOf<String>()
-        val dataStudentPhone = mutableListOf<String>()
+        topBar = { TopBar() },
+        backgroundColor = Color(red = 0xF9, green = 0xF9, blue = 0xF9),
+        content = {
+            val dataHashMap = LinkedHashMap<String, List<String>>()
+            val dataStudentName = mutableListOf<String>()
+            val dataStudentPhone = mutableListOf<String>()
 
-        getStudentNoDeleted(application = application)?.forEach { dataStudentName.add(it.name) }
-        getStudentNoDeleted(application = application)?.forEach { dataStudentPhone.add(it.phone) }
+            getStudentNoDeleted(application = application)?.forEach { dataStudentName.add(it.name) }
+            getStudentNoDeleted(application = application)?.forEach { dataStudentPhone.add(it.phone) }
 
-        dataHashMap.put("Nom", dataStudentName)
-        dataHashMap.put("Phone", dataStudentPhone)
+            dataHashMap.put("Nom", dataStudentName)
+            dataHashMap.put("Phone", dataStudentPhone)
 
-        CreateList(dataTab = dataHashMap)
-    }
+            CreateList(dataTab = dataHashMap)
+        }
+    )
 }

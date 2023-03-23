@@ -24,7 +24,7 @@ fun SeanceScreen(application: Application) {
     Scaffold(
         topBar = { TopBar() }
     ) {
-        val dataHashMap = HashMap<String, List<String>>()
+        val dataHashMap = LinkedHashMap<String, List<String>>()
         val dataSessionDate = mutableListOf<String>()
 
         getSession(application = application)?.forEach { dataSessionDate.add(it.date) }

@@ -22,7 +22,7 @@ fun FormationScreen(application: Application) {
     Scaffold(
         topBar = { TopBar() }
     ) {
-        val dataHashMap = HashMap<String, List<String>>()
+        val dataHashMap = LinkedHashMap<String, List<String>>()
         val dataFormationName = mutableListOf<String>()
 
         getFormation(application = application)?.forEach { dataFormationName.add(it.name) }

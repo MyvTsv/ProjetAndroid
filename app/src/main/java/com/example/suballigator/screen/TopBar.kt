@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 fun TopBar() {
     TopAppBar(
         title = {
-            Text(text = "InitiatorName", color = Color.White)
+            Text(text = "Sub'Alligator", color = Color.White)
         },
         backgroundColor = Color(red = 30, green = 144, blue = 255),
         contentColor = Color.White,
