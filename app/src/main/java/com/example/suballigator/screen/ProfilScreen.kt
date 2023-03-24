@@ -2,19 +2,23 @@ package com.example.suballigator.screen
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.suballigator.AppDatabase
+import com.example.suballigator.entity.Initiator
+import com.example.suballigator.entity.Level
+import com.example.suballigator.getLevel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -31,6 +35,7 @@ fun ProfilScreen(application: Application) {
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ProfilCard(
     application: Application,
@@ -41,6 +46,14 @@ fun ProfilCard(
     passwordInput: String,
     setPassword: (String) -> Unit
 ) {
+    val levels : List<Level>? = getLevel(application)
+    var expanded by remember {
+        mutableStateOf(false)
+    }
+    var selectedItem by remember {
+        mutableStateOf(levels?.get(0)?.name)
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -117,18 +130,65 @@ fun ProfilCard(
                     )
                 }
             )
+            Text(text = "Niveau", style = MaterialTheme.typography.h6, modifier = Modifier.padding(12.dp))
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                elevation = 10.dp,
+                shape = MaterialTheme.shapes.small,
+                content = {
+                    ExposedDropdownMenuBox(
+                        expanded = expanded,
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        onExpandedChange = {
+                            expanded = !expanded
+                        }
+                    ) {
+                        TextField(
+                            value = selectedItem ?: "",
+                            onValueChange = {},
+                            readOnly = true,
+                            label = { Text(text = "Label") },
+                            trailingIcon = {
+                                ExposedDropdownMenuDefaults.TrailingIcon(
+                                    expanded = expanded
+                                )
+                            },
+                            colors = ExposedDropdownMenuDefaults.textFieldColors()
+                        )
+                        ExposedDropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false }
+                        ) {
+                            levels?.forEach { selectedOption ->
+                                DropdownMenuItem(onClick = {
+                                    selectedItem = selectedOption.name
+                                    expanded = false
+                                }) {
+                                    Text(text = selectedOption.name)
+                                }
+                            }
+                        }
+                    }
+                }
+            )
             Button(
                 onClick = {
                     AppDatabase.initiatorConnected!!.name = nameInput
                     AppDatabase.initiatorConnected!!.email = emailInput
                     AppDatabase.initiatorConnected!!.password = passwordInput
                     GlobalScope.launch {
-                        AppDatabase.updateInitiator(application = application)
+                        //val levelId = AppDatabase.getDatabase(application).levelDAO().getLevelByName(selectedItem!!).id
+                        //Toast.makeText(application, levelId, Toast.LENGTH_SHORT).show()
+                        //AppDatabase.initiatorConnected!!.levelId = levelId
+                        AppDatabase.getDatabase(application).initiatorDAO().update(AppDatabase.initiatorConnected!!)
                     }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp)
+                    .height(80.dp)
             ) {
                 Text("Enregistrer")
             }

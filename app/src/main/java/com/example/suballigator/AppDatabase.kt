@@ -70,9 +70,5 @@ abstract class AppDatabase : RoomDatabase() {
             db.execSQL("CREATE TABLE IF NOT EXISTS formation (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT)")
         }
 
-        suspend fun updateInitiator(application: Application) {
-            val initiatorDAO = getDatabase(application).initiatorDAO()
-            initiatorConnected = initiatorDAO.getInitiatorById(initiatorConnected!!.id)
-        }
     }
 }

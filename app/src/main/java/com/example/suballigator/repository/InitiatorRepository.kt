@@ -24,4 +24,8 @@ class InitiatorRepository(private val initiatorDao: InitiatorDAO) {
 
     suspend fun deleteAll() = initiatorDao.deleteAll()
 
+    suspend fun updateInitiator(initiator: Initiator) {
+        initiatorDao.update(initiator)
+    }
+
 }

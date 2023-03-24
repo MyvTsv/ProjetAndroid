@@ -50,5 +50,4 @@ class InitiatorViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-
 }

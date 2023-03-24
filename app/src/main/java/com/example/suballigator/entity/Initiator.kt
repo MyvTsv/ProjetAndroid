@@ -19,7 +19,7 @@ data class Initiator(
     var email: String,
     var password: String,
     val director: Boolean,
-    val levelId: Int,
+    var levelId: Int,
     val deleted: Boolean
 
 ) {

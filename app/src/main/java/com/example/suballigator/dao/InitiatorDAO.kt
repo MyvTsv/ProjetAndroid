@@ -3,6 +3,7 @@ package com.example.suballigator.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.suballigator.entity.Initiator
 
 @Dao
@@ -19,5 +20,8 @@ interface InitiatorDAO {
 
     @Query("DELETE FROM Initiator")
     suspend fun deleteAll()
+
+    @Update
+    suspend fun update(initiator: Initiator)
 
 }
