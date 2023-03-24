@@ -20,7 +20,7 @@ import com.example.suballigator.getFormation
 @Composable
 fun FormationScreen(application: Application) {
     Scaffold(
-        topBar = { TopBar() }
+        topBar = { TopBar(application) }
     ) {
         val dataHashMap = LinkedHashMap<String, List<String>>()
         val dataFormationName = mutableListOf<String>()

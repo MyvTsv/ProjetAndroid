@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ProfilScreen(application: Application) {
     Scaffold(
-        topBar = { TopBar() }
+        topBar = { TopBar(application) }
     ) {
         ProfilCard(application = application)
     }

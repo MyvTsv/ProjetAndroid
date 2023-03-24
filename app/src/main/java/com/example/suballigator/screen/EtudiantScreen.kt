@@ -29,7 +29,7 @@ import kotlinx.coroutines.runBlocking
 @Composable
 fun EtudiantScreen(application: Application) {
     Scaffold(
-        topBar = { TopBar() },
+        topBar = { TopBar(application) },
         backgroundColor = Color(red = 0xF9, green = 0xF9, blue = 0xF9),
         content = {
             val dataHashMap = LinkedHashMap<String, List<String>>()

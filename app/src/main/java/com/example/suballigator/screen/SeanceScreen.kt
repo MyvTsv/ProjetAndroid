@@ -22,7 +22,7 @@ import com.example.suballigator.entity.Session
 @Composable
 fun SeanceScreen(application: Application) {
     Scaffold(
-        topBar = { TopBar() }
+        topBar = { TopBar(application) }
     ) {
         val dataHashMap = LinkedHashMap<String, List<String>>()
         val dataSessionDate = mutableListOf<String>()
