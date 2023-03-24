@@ -1,5 +1,6 @@
 package com.example.suballigator
 
+import android.app.Application
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
@@ -69,6 +70,9 @@ abstract class AppDatabase : RoomDatabase() {
             db.execSQL("CREATE TABLE IF NOT EXISTS formation (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, description TEXT)")
         }
 
-
+        suspend fun updateInitiator(application: Application) {
+            val initiatorDAO = getDatabase(application).initiatorDAO()
+            initiatorConnected = initiatorDAO.getInitiatorById(initiatorConnected!!.id)
+        }
     }
 }

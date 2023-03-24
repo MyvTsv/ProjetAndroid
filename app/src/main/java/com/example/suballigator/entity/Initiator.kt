@@ -15,9 +15,9 @@ data class Initiator(
 
     @PrimaryKey
     val id: Int,
-    val name: String,
-    val email: String,
-    val password: String,
+    var name: String,
+    var email: String,
+    var password: String,
     val director: Boolean,
     val levelId: Int,
     val deleted: Boolean
