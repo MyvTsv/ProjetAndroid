@@ -12,10 +12,10 @@ import com.example.suballigator.AppDatabase
 import androidx.compose.runtime.*
 
 @Composable
-fun TopBar() {
+fun TopBar(title: String = "Sub'Alligator") {
     TopAppBar(
         title = {
-            Text(text = "Sub'Alligator", color = Color.White)
+            Text(text = title, color = Color.White)
         },
         backgroundColor = Color(red = 30, green = 144, blue = 255),
         contentColor = Color.White,

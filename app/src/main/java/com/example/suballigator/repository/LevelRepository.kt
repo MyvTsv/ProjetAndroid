@@ -15,6 +15,8 @@ class LevelRepository(private val levelDao: LevelDAO) {
 
     suspend fun getAll() = levelDao.getAll()
 
+    suspend fun getLevelById(id: Int) = levelDao.getLevelById(id)
+
     suspend fun isExist(level: Level): Boolean {
         if (levelDao.getLevelById(level.id) != null) {
             return true

@@ -1,4 +1,4 @@
-package com.example.suballigator
+package com.example.suballigator.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,17 +6,13 @@ import android.os.Bundle
 import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.example.suballigator.dao.InitiatorDAO
+import com.example.suballigator.AppDatabase
+import com.example.suballigator.R
 import com.example.suballigator.entity.Initiator
-import com.example.suballigator.entity.Participant
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.suballigator.getInitiator
+import com.example.suballigator.insertDataAPI
 import kotlinx.coroutines.runBlocking
-import org.w3c.dom.Text
-import kotlin.math.log
 
 class LoginScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

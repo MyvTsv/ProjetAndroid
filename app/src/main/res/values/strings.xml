@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SubAlligator</string>
     <string name="title_activity_liste_des_formations_acitivty">ListeDesFormationsAcitivty</string>
+    <string name="title_activity_seance_by_formation_screen">SeanceByFormationScreen</string>
 </resources>
