@@ -21,6 +21,7 @@ import com.example.suballigator.entity.Level
 import com.example.suballigator.getLevel
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -35,6 +36,7 @@ fun ProfilScreen(application: Application) {
     }
 }
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ProfilCard(
@@ -50,8 +52,15 @@ fun ProfilCard(
     var expanded by remember {
         mutableStateOf(false)
     }
+    var level: Level? = null
+    runBlocking {
+        //GlobalScope.launch {
+            level = AppDatabase.getDatabase(application).levelDAO()
+                .getLevelById(AppDatabase.initiatorConnected!!.levelId)
+        //}
+    }
     var selectedItem by remember {
-        mutableStateOf(levels?.get(0)?.name)
+        mutableStateOf(level?.name)
     }
 
     Box(
@@ -179,9 +188,8 @@ fun ProfilCard(
                     AppDatabase.initiatorConnected!!.email = emailInput
                     AppDatabase.initiatorConnected!!.password = passwordInput
                     GlobalScope.launch {
-                        //val levelId = AppDatabase.getDatabase(application).levelDAO().getLevelByName(selectedItem!!).id
-                        //Toast.makeText(application, levelId, Toast.LENGTH_SHORT).show()
-                        //AppDatabase.initiatorConnected!!.levelId = levelId
+                        val levelId = AppDatabase.getDatabase(application).levelDAO().getLevelByName(selectedItem!!).id
+                        AppDatabase.initiatorConnected!!.levelId = levelId
                         AppDatabase.getDatabase(application).initiatorDAO().update(AppDatabase.initiatorConnected!!)
                     }
                 },

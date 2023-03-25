@@ -1,9 +1,8 @@
 package com.example.suballigator.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import android.app.Application
+import androidx.room.*
+import com.example.suballigator.AppDatabase
 import com.example.suballigator.entity.Initiator
 
 @Dao
@@ -23,5 +22,15 @@ interface InitiatorDAO {
 
     @Update
     suspend fun update(initiator: Initiator)
+
+    @Transaction
+    suspend fun updateInitiatorLevel(initiatorId: Int, levelId: Int, a: Application) {
+        val initiator = getInitiatorById(initiatorId)
+        val level = AppDatabase.getDatabase(a).levelDAO().getLevelById(levelId)
+        if (initiator != null && level != null) {
+            initiator.levelId = level.id
+            update(initiator)
+        }
+    }
 
 }
