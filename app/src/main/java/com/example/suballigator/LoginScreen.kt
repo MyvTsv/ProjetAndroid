@@ -31,7 +31,10 @@ class LoginScreen : AppCompatActivity() {
                 val email = emailInput.text.toString()
                 val password = passwordInput.text.toString()
 
-                runBlocking { insertDataAPI(application) }
+                //check si la base de données est vide
+                if(getLevel(application)?.size == 0 || getLevel(application) == null){
+                    runBlocking { insertDataAPI(application) }
+                }
 
                 val initiators: List<Initiator>? = getInitiator(application)
 
