@@ -25,6 +25,10 @@ class ParticipantViewModel(application: Application) : AndroidViewModel(applicat
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getParticipantById(participant_id: Int) = repository.getParticipantById(participant_id)
+
+    suspend fun getParticipantByStudentId(student_id: Int) = repository.getParticipantByStudentId(student_id)
+
     suspend fun isExist(participant: Participant) = repository.isExist(participant)
 
     suspend fun deleteAll() = repository.deleteAll()

@@ -27,6 +27,8 @@ class StatusViewModel(application: Application) : AndroidViewModel(application) 
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getStatusById(status_id: Int) = repository.getStatusById(status_id)
+
     suspend fun isExist(status: Status) = repository.isExist(status)
 
     suspend fun deleteAll() = repository.deleteAll()

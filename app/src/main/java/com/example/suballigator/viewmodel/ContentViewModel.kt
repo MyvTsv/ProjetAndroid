@@ -27,6 +27,10 @@ class ContentViewModel(application: Application) : AndroidViewModel(application)
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getContentById(contentId: Int) = repository.getContentById(contentId)
+
+    suspend fun getContentBySessionId(sessionId: Int) = repository.getContentBySessionId(sessionId)
+
     suspend fun isExist(content: Content) = repository.isExist(content)
 
     suspend fun deleteAll() = repository.deleteAll()

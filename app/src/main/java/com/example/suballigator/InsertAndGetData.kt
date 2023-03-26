@@ -70,6 +70,17 @@ fun getAptitude(application: Application): List<Aptitude>? {
     return aptitudeData.value
 }
 
+fun getAptitudeById(application: Application, id: Int): Aptitude {
+    val aptitudeViewModel = AptitudeViewModel(application)
+    val aptitudeData: Aptitude
+
+    runBlocking {
+        aptitudeData = aptitudeViewModel.getAptitudeById(id)
+    }
+
+    return aptitudeData
+}
+
 fun insertContainSkillAPI(application: Application) {
     val containSkillViewModel = ContainSkillViewModel(application)
 
@@ -103,6 +114,28 @@ fun getContent(application: Application): List<Content>? {
 
     runBlocking {
         contentData.value = contentViewModel.getAll()
+    }
+
+    return contentData.value
+}
+
+fun getContentById(application: Application, id: Int): Content {
+    val contentViewModel = ContentViewModel(application)
+    val contentData: Content
+
+    runBlocking {
+        contentData = contentViewModel.getContentById(id)
+    }
+
+    return contentData
+}
+
+fun getContentBySessionId(application: Application, id: Int): List<Content>? {
+    val contentViewModel = ContentViewModel(application)
+    val contentData: MutableLiveData<List<Content>> = MutableLiveData()
+
+    runBlocking {
+        contentData.value = contentViewModel.getContentBySessionId(id)
     }
 
     return contentData.value
@@ -207,6 +240,28 @@ fun getParticipant(application: Application): List<Participant>? {
     return participantData.value
 }
 
+fun getParticipantById(application: Application, id: Int): Participant? {
+    val participantViewModel = ParticipantViewModel(application)
+    val participantData: Participant
+
+    runBlocking {
+        participantData = participantViewModel.getParticipantById(id)
+    }
+
+    return participantData
+}
+
+fun getParticipantByStudentId(application: Application, id: Int): List<Participant>? {
+    val participantViewModel = ParticipantViewModel(application)
+    val participantData: MutableLiveData<List<Participant>> = MutableLiveData()
+
+    runBlocking {
+        participantData.value = participantViewModel.getParticipantByStudentId(id)
+    }
+
+    return participantData.value
+}
+
 fun insertSessionAPI(application: Application) {
     val sessionViewModel = SessionViewModel(application)
 
@@ -267,6 +322,17 @@ fun getSkill(application: Application): List<Skill>? {
     return skillData.value
 }
 
+fun getSkillById(application: Application, id: Int): Skill? {
+    val skillViewModel = SkillViewModel(application)
+    val skillData: Skill
+
+    runBlocking {
+        skillData = skillViewModel.getSkillById(id)
+    }
+
+    return skillData
+}
+
 fun insertStatusAPI(application: Application) {
     val statusViewModel = StatusViewModel(application)
 
@@ -284,6 +350,17 @@ fun getStatus(application: Application): List<Status>? {
     }
 
     return statusData.value
+}
+
+fun getStatusById(application: Application, id: Int): Status? {
+    val statusViewModel = StatusViewModel(application)
+    val statusData: Status
+
+    runBlocking {
+        statusData = statusViewModel.getStatusById(id)
+    }
+
+    return statusData
 }
 
 fun insertStudentAPI(application: Application) {
@@ -329,6 +406,17 @@ fun getStudentByFormationId(application: Application, id: Int): Student? {
     return studentData
 }
 
+
+fun getStudentById(application: Application, id: Int): Student? {
+    val studentViewModel = StudentViewModel(application)
+    val studentData: Student
+
+    runBlocking {
+        studentData = studentViewModel.getStudentById(id)
+    }
+
+    return studentData
+}
 fun insertTrainingManagerAPI(application: Application) {
     val trainingManagerViewModel = TrainingManagerViewModel(application)
 

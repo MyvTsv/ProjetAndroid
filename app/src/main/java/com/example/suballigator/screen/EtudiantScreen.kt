@@ -2,6 +2,7 @@ package com.example.suballigator.screen
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,9 +11,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.suballigator.activity.EvaluationScreen
+import com.example.suballigator.activity.SeanceByFormationScreen
 import com.example.suballigator.entity.Formation
 import com.example.suballigator.entity.Student
 import com.example.suballigator.getFormationById
@@ -88,6 +92,7 @@ fun AddStudentDetailCell(application: Application, student: Student) {
 
 @Composable
 fun showStudentCard(application: Application, student: Student): Boolean {
+    val context = LocalContext.current
     var showCard by remember { mutableStateOf(true) }
     var formation = getFormationById(application, student.formationId)
     var level = getLevelById(application, formation.levelId)
@@ -119,6 +124,16 @@ fun showStudentCard(application: Application, student: Student): Boolean {
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red)
                 ) {
                     Text(text = "Fermer")
+                }
+                Button(
+                    onClick = { showCard = false
+                        val intent = Intent(context, EvaluationScreen::class.java).apply {
+                            putExtra("studentId", student.id)
+                        }
+                        context.startActivity(intent)},
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Gray)
+                ) {
+                    Text(text = "Evaluation")
                 }
             },
             modifier = Modifier.padding(16.dp)

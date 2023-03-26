@@ -25,6 +25,8 @@ class SkillViewModel(application: Application) : AndroidViewModel(application) {
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getSkillById(skillId: Int) = repository.getSkillById(skillId)
+
     suspend fun isExist(skill: Skill) = repository.isExist(skill)
 
     suspend fun deleteAll() = repository.deleteAll()

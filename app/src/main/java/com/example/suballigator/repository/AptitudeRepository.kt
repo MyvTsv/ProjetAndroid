@@ -15,6 +15,8 @@ class AptitudeRepository(private val aptitudeDao: AptitudeDAO) {
 
     suspend fun getAll() = aptitudeDao.getAll()
 
+    suspend fun getAptitudeById(aptitudeId: Int) = aptitudeDao.getAptitudeById(aptitudeId)
+
     suspend fun isExist(aptitude: Aptitude): Boolean {
         if (aptitudeDao.getAptitudeById(aptitude.id) != null) {
             return true
