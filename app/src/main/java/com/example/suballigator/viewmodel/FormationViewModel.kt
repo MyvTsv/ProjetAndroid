@@ -27,6 +27,8 @@ class FormationViewModel(application: Application) : AndroidViewModel(applicatio
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getFormationById(id: Int) = repository.getFormationById(id)
+
     suspend fun isExist(formation: Formation) = repository.isExist(formation)
 
     suspend fun deleteAll() = repository.deleteAll()

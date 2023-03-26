@@ -15,6 +15,10 @@ class ContentRepository(private val contentDao: ContentDAO) {
 
         suspend fun getAll() = contentDao.getAll()
 
+        suspend fun getContentById(contentId: Int) = contentDao.getContentById(contentId)
+
+        suspend fun getContentBySessionId(sessionId: Int) = contentDao.getContentBySessionId(sessionId)
+
         suspend fun isExist(content: Content): Boolean {
             if (contentDao.getContentById(content.id) != null) {
                 return true

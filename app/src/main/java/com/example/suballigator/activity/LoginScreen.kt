@@ -1,4 +1,4 @@
-package com.example.suballigator
+package com.example.suballigator.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,9 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import com.example.suballigator.*
 import com.example.suballigator.entity.Initiator
 import kotlinx.coroutines.runBlocking
-
 class LoginScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

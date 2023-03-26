@@ -15,6 +15,10 @@ class ParticipantRepository(private val participantDao: ParticipantDAO) {
 
     suspend fun getAll() = participantDao.getAll()
 
+    suspend fun getParticipantById(participant_id: Int) = participantDao.getParticipantById(participant_id)
+
+    suspend fun getParticipantByStudentId(student_id: Int) = participantDao.getParticipantByStudentId(student_id)
+
     suspend fun isExist(participant: Participant): Boolean {
         if (participantDao.getParticipantById(participant.id) != null) {
             return true

@@ -15,6 +15,10 @@ class SessionRepository(private val sessionDao: SessionDAO) {
 
     suspend fun getAll() = sessionDao.getAll()
 
+    suspend fun getSessionById(id: Int) = sessionDao.getSessionById(id)
+
+    suspend fun getSessionByFormationId(id: Int) = sessionDao.getSessionByFormationId(id)
+
     suspend fun isExist(session: Session): Boolean {
         if (sessionDao.getSessionById(session.id) != null) {
             return true

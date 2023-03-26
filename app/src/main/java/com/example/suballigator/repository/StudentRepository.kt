@@ -17,6 +17,10 @@ class StudentRepository(private val studentDao: StudentDAO) {
 
     suspend fun getAllNoDeleted() = studentDao.getAllNoDeleted()
 
+    suspend fun getStudentByFormationId(id: Int) = studentDao.getStudentByFormationId(id)
+
+    suspend fun getStudentById(student_id: Int) = studentDao.getStudentById(student_id)
+
     suspend fun isExist(student: Student): Boolean {
         if (studentDao.getStudentById(student.id) != null) {
             return true

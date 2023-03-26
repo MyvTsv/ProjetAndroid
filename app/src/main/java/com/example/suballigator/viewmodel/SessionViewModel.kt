@@ -25,6 +25,10 @@ class SessionViewModel(application: Application) : AndroidViewModel(application)
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getSessionbyId(id: Int) = repository.getSessionById(id)
+
+    suspend fun getSessionByFromationId(id: Int) = repository.getSessionByFormationId(id)
+
     suspend fun isExist(session: Session) = repository.isExist(session)
 
     suspend fun deleteAll() = repository.deleteAll()

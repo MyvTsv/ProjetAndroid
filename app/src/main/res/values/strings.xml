@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">SubAlligator</string>
     <string name="title_activity_liste_des_formations_acitivty">ListeDesFormationsAcitivty</string>
+    <string name="title_activity_seance_by_formation_screen">SeanceByFormationScreen</string>
+    <string name="title_activity_evaluation">EvaluationActivity</string>
+    <string name="title_activity_evaluation_screen">EvaluationScreen</string>
+    <string name="title_activity_content_screen">ContentScreen</string>
 </resources>

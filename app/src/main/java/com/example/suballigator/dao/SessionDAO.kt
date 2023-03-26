@@ -20,6 +20,9 @@ interface SessionDAO {
     @Query("SELECT * FROM Session WHERE id = :session_id")
     suspend fun getSessionById(session_id: Int): Session
 
+    @Query("SELECT * FROM Session WHERE formationId = :formationId")
+    suspend fun getSessionByFormationId(formationId: Int): List<Session>
+
     @Query("DELETE FROM Session")
     suspend fun deleteAll()
 }

@@ -28,6 +28,8 @@ class LevelViewModel(application: Application): AndroidViewModel(application) {
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getLevelById(id: Int) = repository.getLevelById(id)
+
     suspend fun isExist(level: Level) = repository.isExist(level)
 
     suspend fun deleteAll() = repository.deleteAll()

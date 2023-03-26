@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace 'com.example.suballigator'
-    compileSdk 33
+    compileSdk 33  //33
 
     defaultConfig {
         applicationId "com.example.suballigator"
-        minSdk 24
-        targetSdk 33
+        minSdk 24  //24
+        targetSdk 33 //33
         versionCode 1
         versionName "1.0"
 

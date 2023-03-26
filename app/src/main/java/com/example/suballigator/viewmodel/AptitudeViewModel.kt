@@ -25,6 +25,8 @@ class AptitudeViewModel(application: Application) : AndroidViewModel(application
 
     suspend fun getAll() = repository.getAll()
 
+    suspend fun getAptitudeById(aptitudeId: Int) = repository.getAptitudeById(aptitudeId)
+
     suspend fun isExist(aptitude: Aptitude) = repository.isExist(aptitude)
 
     suspend fun deleteAll() = repository.deleteAll()

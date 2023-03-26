@@ -30,7 +30,7 @@ fun ProfilScreen(application: Application) {
     var (emailInput, setEmail) = remember { mutableStateOf(AppDatabase.initiatorConnected!!.email) }
     var (passwordInput, setPassword) = remember { mutableStateOf(AppDatabase.initiatorConnected!!.password) }
     Scaffold(
-        topBar = { TopBar(application) }
+        topBar = { TopBar(application, "Sub'Alligator") }
     ) {
         ProfilCard(application = application, nameInput = nameInput, setName = setName, emailInput = emailInput, setEmail = setEmail, passwordInput = passwordInput, setPassword = setPassword)
     }

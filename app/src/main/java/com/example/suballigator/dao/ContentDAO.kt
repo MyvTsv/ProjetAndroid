@@ -17,6 +17,9 @@ interface ContentDAO {
     @Query("SELECT * FROM Content WHERE id = :contentId")
     suspend fun getContentById(contentId: Int): Content
 
+    @Query("SELECT * FROM Content WHERE sessionId = :sessionId")
+    suspend fun getContentBySessionId(sessionId: Int): List<Content>
+
     @Query("DELETE FROM Content")
     suspend fun deleteAll()
 }

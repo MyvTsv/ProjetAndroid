@@ -1,6 +1,5 @@
-package com.example.suballigator
+package com.example.suballigator.activity
 
-import ContainSkillViewModel
 import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Bundle
@@ -8,17 +7,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.navigation.compose.composable
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.DarkGray
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 
@@ -26,12 +19,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.suballigator.BottomMenuItem
 import com.example.suballigator.screen.*
-import com.example.suballigator.entity.*
 import com.example.suballigator.ui.theme.SubAlligatorTheme
-import com.example.suballigator.viewmodel.*
-import kotlinx.coroutines.*
-import java.lang.Thread.sleep
 
 class ListeDesFormationsAcitivty : ComponentActivity() {
 

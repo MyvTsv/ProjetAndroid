@@ -11,13 +11,13 @@ import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.Color
 import com.example.suballigator.AppDatabase
-import com.example.suballigator.LoginScreen
+import com.example.suballigator.activity.LoginScreen
 
 @Composable
-fun TopBar(application : Application) {
+fun TopBar(application : Application, titre : String) {
     TopAppBar(
         title = {
-            Text(text = "Sub'Alligator", color = Color.White)
+            Text(text = titre, color = Color.White)
         },
         backgroundColor = Color(red = 30, green = 144, blue = 255),
         contentColor = Color.White,
