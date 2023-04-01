@@ -37,14 +37,13 @@ class ContentScreen : ComponentActivity() {
 
                 Scaffold(
                     topBar = { TopBar(application,"Detail de la séance du " + session?.date) },
-                    content = { CreateContentList(contents = getContentBySessionId(application = application, id = idSession), application = application)
-                        Button(
-                            onClick = {
-                                finish()
-                            }
-                        ) {
-                            Text(text = "Retour")
-                        }
+                    content = {
+                        CreateContentList(
+                            contents = getContentBySessionId(application = application,
+                                id = idSession
+                            ),
+                            application = application
+                        )
                     }
                 )
             }
@@ -54,19 +53,26 @@ class ContentScreen : ComponentActivity() {
 
 @Composable
 fun CreateContentList(application: Application, contents: List<Content>?) {
-    LazyColumn(modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-    ) {
-        item { AddHeadRow(title = listOf(
-            "Aptitude travaillé"
-        ))}
-        contents?.size?.let {
-            items(it) { index ->
-                AddContentDataRow(content = contents[index], index = index, application = application)
+    Column {
+        LazyColumn(
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+        ) {
+            item {
+                AddHeadRow(title = listOf("Aptitude travaillé"))
+            }
+            contents?.let {
+                items(it.size) { index ->
+                    AddContentDataRow(content = it[index], index = index, application = application)
+                }
             }
         }
     }
 }
+
 
 @Composable
 fun AddContentDataRow(content: Content, index: Int, application: Application) {
@@ -89,7 +95,7 @@ fun AddContentDataRow(content: Content, index: Int, application: Application) {
                 .weight(1f)
                 .fillMaxWidth()
                 .wrapContentHeight(),
-            textAlign = TextAlign.Center
+            textAlign = TextAlign.Center,
         )
         AddAptitudeDetailCell(aptitude, application = application)
     }

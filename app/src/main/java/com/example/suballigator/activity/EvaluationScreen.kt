@@ -35,14 +35,8 @@ class EvaluationScreen : ComponentActivity() {
 
                 Scaffold(
                     topBar = { TopBar(application, "Evaluation de " + student?.name) },
-                    content = { CreateEvaluationList(participants = getParticipantByStudentId(application = application, id = idStudent), application = application)
-                        Button(
-                            onClick = {
-                                finish()
-                            }
-                        ) {
-                            Text(text = "Revenir à la liste des étudiants")
-                        }
+                    content = { CreateEvaluationList(participants = getParticipantByStudentId(application = application, id = idStudent),
+                        application = application)
                     }
                 )
             }
@@ -52,16 +46,18 @@ class EvaluationScreen : ComponentActivity() {
 
 @Composable
 fun CreateEvaluationList(application: Application, participants: List<Participant>?) {
-    LazyColumn(modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-    ) {
-        item { AddHeadRow(title = listOf(
-            "Contenu",
-            "Status"
-        ))}
-        participants?.size?.let {
-            items(it) { index ->
-                AddEvaluationDataRow(participant = participants[index], index = index, application = application)
+    Column {
+        LazyColumn(modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+        ) {
+            item { AddHeadRow(title = listOf(
+                "Contenu",
+                "Status"
+            ))}
+            participants?.size?.let {
+                items(it) { index ->
+                    AddEvaluationDataRow(participant = participants[index], index = index, application = application)
+                }
             }
         }
     }

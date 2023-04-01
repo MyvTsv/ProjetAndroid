@@ -70,7 +70,7 @@ class LoginScreen : AppCompatActivity() {
     }
 
     private fun initiatorExist(initiators : List<Initiator>, email:String, password:String):Boolean{
-        initiators?.forEach { initiator ->
+        initiators.forEach { initiator ->
             if (email == initiator.email && password == initiator.password) {
                 AppDatabase.initiatorConnected = initiator
                 return true

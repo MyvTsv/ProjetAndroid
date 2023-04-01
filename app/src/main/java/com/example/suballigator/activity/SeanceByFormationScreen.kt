@@ -28,28 +28,9 @@ class SeanceByFormationScreen : ComponentActivity() {
                 Scaffold(
                     topBar = { TopBar(application, "Séance pour la formation " + formation.name) },
                     content = { CreateSessionList(sessions = getSessionByFormationId(application = application, id = idFormation))
-                        Button(
-                            onClick = {
-                                finish()
-                            }
-                        ) {
-                            Text(text = "Revenir à la liste des formations")
-                        }}
+                    }
                 )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    SubAlligatorTheme {
-        Greeting("Android")
     }
 }
