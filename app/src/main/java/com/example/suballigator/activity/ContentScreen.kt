@@ -124,11 +124,20 @@ fun showAptitudeCard(aptitude: Aptitude, commentary: String?, application: Appli
             title = { Text(
                 text = aptitude.name,
                 fontWeight = FontWeight.Bold) },
-            text = { Text(text = "Level : " + level?.name)
-                   if(commentary != null) {
-                       Spacer(modifier = Modifier.height(16.dp))
-                       Text(text = "Commentaire : " + commentary)
-                   }},
+            text = {
+                Column {
+                    Text(
+                        text = "Level : " + level?.name,
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    if (commentary != null) {
+                        Text(
+                            text = "Commentaire : " + commentary,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                    }
+                }
+            },
             confirmButton = {
                 Button(
                     onClick = { showCard = false },
